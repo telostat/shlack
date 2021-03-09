@@ -1,0 +1,98 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: ce3ffc90696ab5ea273022bd6752417ed51b0d2dd133e0561a6c74ddc1ae9788
+
+name:           shlack
+version:        0.0.0.1
+description:    Please see the README on GitHub at <https://github.com/telostat/shlack#readme>
+homepage:       https://github.com/telostat/shlack#readme
+bug-reports:    https://github.com/telostat/shlack/issues
+author:         Vehbi Sinan Tunalioglu
+maintainer:     vst@vsthost.com
+copyright:      Copyright (c) 2021 Telostat Pte Ltd
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/telostat/shlack
+
+library
+  exposed-modules:
+      Network.Shlack
+  other-modules:
+      Paths_shlack
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , http-conduit
+    , text
+  default-language: Haskell2010
+
+executable shlack
+  main-is: Main.hs
+  other-modules:
+      Paths_shlack
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -static -O2
+  cc-options: -static
+  ld-options: -static -pthread
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , http-conduit
+    , optparse-applicative
+    , shlack
+    , text
+    , yaml
+  default-language: Haskell2010
+
+test-suite shlack-doctest
+  type: exitcode-stdio-1.0
+  main-is: doctest.hs
+  other-modules:
+      Paths_shlack
+  hs-source-dirs:
+      ./.
+  ghc-options: -threaded
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , doctest
+    , http-conduit
+    , shlack
+    , text
+  default-language: Haskell2010
+
+test-suite shlack-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_shlack
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , http-conduit
+    , shlack
+    , text
+  default-language: Haskell2010
